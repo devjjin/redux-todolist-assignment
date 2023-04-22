@@ -1,10 +1,13 @@
 import React from 'react';
 import Layout from "../shared/Layout";
+import TodoHeader from '../components/TodoHeader';
 
 const Home = () => {
   return (
     <div>
-      <Layout></Layout>
+      <Layout>
+        <TodoHeader />
+      </Layout>
     </div>
   );
 };
