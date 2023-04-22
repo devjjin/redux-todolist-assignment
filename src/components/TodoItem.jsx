@@ -8,6 +8,9 @@ const TodoItem = ({ todoItem }) => {
   const onDeleteClick = () => {
     dispatch(deleteTodo(todoItem.id));
   };
+  const onToggleClick = () => {
+    dispatch(toggleStatusTodo(todoItem.id));
+  };
 
   return (
     <Main key={todoItem.id}>
@@ -17,6 +20,9 @@ const TodoItem = ({ todoItem }) => {
         <p>{todoItem.content}</p>
         <ButtonContainer>
           <DeleteButton onClick={onDeleteClick}>삭제하기</DeleteButton>
+          <ToggleButton onClick={onToggleClick} isDone={todoItem.isDone}>
+            {!todoItem.isDone ? '완료' : '취소'}
+          </ToggleButton>
         </ButtonContainer>
       </Container>
     </Main>
