@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/modules/todos';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,6 +8,7 @@ const TodoCreate = () => {
   const dispatch = useDispatch();
   const initialValue = { id: uuidv4(), title: '', content: '', isDone: false };
   const [todoItem, setTodoItem] = useState(initialValue);
+  const titleStInput = useRef();
 
   const onChangeHandler = e => setTodoItem({ ...todoItem, [e.target.id]: e.target.value });
 
@@ -25,6 +26,7 @@ const TodoCreate = () => {
     };
     dispatch(addTodo(newTodo));
     setTodoItem(initialValue);
+    titleStInput.current.focus();
   };
 
   return (
@@ -32,7 +34,7 @@ const TodoCreate = () => {
       <Form onSubmit={onSubmitHandler}>
         <FormGroup>
           <Label htmlFor="title">할일</Label>
-          <Input type="text" id="title" value={todoItem.title} onChange={onChangeHandler}></Input>
+          <Input type="text" id="title" value={todoItem.title} onChange={onChangeHandler} ref={titleStInput}></Input>
           <Label htmlFor="content">내용</Label>
           <Input type="text" id="content" value={todoItem.content} onChange={onChangeHandler}></Input>
         </FormGroup>
@@ -51,6 +53,7 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
+  /* gap: 200px; */
   align-items: center;
 `;
 
