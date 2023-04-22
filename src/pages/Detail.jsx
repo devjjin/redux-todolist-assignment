@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 import styled from 'styled-components';
-import GlobalStyle from '../components/GlobalStyle';
+import GlobalStyle from '../styled/GlobalStyle';
 
 const Detail = () => {
   const { id } = useParams();
