@@ -1,70 +1,78 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# React-Redux를 활용한 Todo list 애플리케이션
 
-In the project directory, you can run:
+ ## 프로젝트 개요
+  이 프로젝트는 일정관리를 위한 Todo List입니다. 사용자는 해야 할 일과 내용을 작성하고 진행중인 목록과 완료한 목록을 확인할 수 있습니다. 프로젝트는 [링크](https://todolist-assignment-2.vercel.app/) 에서 확인하실 수 있습니다.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 사용기술
+- CRA
+- React
+- Redux
+- Redux-router-dom
+- Styled-components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+## 기능
+- todo 추가, 목록보기, 삭제, 상세보기
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### 폴더 구조
+```markdown
+src
+├─App
+├─components
+│  ├─TodoCreate
+│  └─TodoHeader
+│  └─TodoItem
+│  └─TodoList
+├─pages
+│  ├─Detail
+│  └─Home
+│  └─NotFound
+├─redux
+│  ├─config
+│  │  └─configStore
+├─modules
+│  ├─todos
+├─shared
+│  ├─Layout
+│  ├─Router
+└─styled
+│  ├─GlobalStyle
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+__src/components__
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| 파일                  | 역할               |
+|---------------------|------------------|
+| `TodoCreate` | todo 생성   |
+| `TodoHeader`  | 헤더         |
+| `TodoItem`            |  todo               |
+| `TodoList`  | todo 목록            |
 
-### `yarn eject`
+__src/modules__
+| 파일   | 역할            |
+|------------|---------------   |
+| `todos` | tdo                |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+__src/pages__
+| 파일   | 역할            |
+|------------|---------------   |
+| `Detail` | todo 상세보기 |
+| `Home` | 홈               |
+| `NotFound` | not found 페이지                |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+###  실행
+```bash
+git clone "https://github.com/devjjin/redux-todolist-assignment.git"
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cd redux-todolist-assignment/
 
-## Learn More
+yarn install 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+yarn start
+```
