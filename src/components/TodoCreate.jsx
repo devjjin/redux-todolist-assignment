@@ -13,6 +13,12 @@ const TodoCreate = () => {
 
   const onSubmitHandler = e => {
     e.preventDefault();
+
+    if (!(todoItem.title.trim() && todoItem.content.trim())) {
+      alert('할일과 내용을 입력하세요');
+      return;
+    }
+
     const newTodo = {
       id: uuidv4(),
       ...todoItem,
