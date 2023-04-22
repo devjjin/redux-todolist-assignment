@@ -1,13 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { deleteTodo, toggleStatusTodo } from '../redux/modules/todos.js';
 
 const TodoItem = ({ todoItem }) => {
+  const dispatch = useDispatch();
+  const onDeleteClick = () => {
+    dispatch(deleteTodo(todoItem.id));
+  };
+
   return (
     <Main key={todoItem.id}>
       <Container>
-          <DetailButton>👀 내용보기</DetailButton>
+        <DetailButton>👀 내용보기</DetailButton>
         <Title>{todoItem.title}</Title>
         <p>{todoItem.content}</p>
+        <ButtonContainer>
+          <DeleteButton onClick={onDeleteClick}>삭제하기</DeleteButton>
+        </ButtonContainer>
       </Container>
     </Main>
   );
@@ -37,6 +47,22 @@ const DetailButton = styled.div`
 const Title = styled.h2`
   margin-top: 10px;
   margin-bottom: 15px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  margin: 12px 0;
+  gap: 10px;
+`;
+
+const DeleteButton = styled.button`
+  border: 2px solid #e03131;
+  color: black;
+`;
+
+const ToggleButton = styled.button`
+  border: 2px solid ${props => (!props.isDone ? '#099268' : '#ced4da')};
+  color: black;
 `;
 
 export default TodoItem;
