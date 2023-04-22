@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import NotFound from './NotFound';
 import styled from 'styled-components';
 import GlobalStyle from '../components/GlobalStyle';
 
@@ -8,6 +9,10 @@ const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const todoItem = useSelector(state => state.todos.find(todo => todo.id === id));
+
+  if (!todoItem) {
+    return <NotFound />;
+  }
 
   return (
     <>
