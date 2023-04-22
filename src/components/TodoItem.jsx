@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleStatusTodo } from '../redux/modules/todos.js';
+import { Link } from 'react-router-dom';
 
 const TodoItem = ({ todoItem }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,9 @@ const TodoItem = ({ todoItem }) => {
   return (
     <Main key={todoItem.id}>
       <Container>
-        <DetailButton>👀 내용보기</DetailButton>
+        <StLink to={`${todoItem.id}`}>
+          <DetailButton>👀 내용보기</DetailButton>
+        </StLink>
         <Title>{todoItem.title}</Title>
         <p>{todoItem.content}</p>
         <ButtonContainer>
@@ -61,6 +64,10 @@ const ButtonContainer = styled.div`
   gap: 10px;
 `;
 
+const StLink = styled(Link)`
+  font-weight: bold;
+  color: #1864ab;
+`
 const DeleteButton = styled.button`
   border: 2px solid #e03131;
   color: black;
