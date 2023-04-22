@@ -1,8 +1,11 @@
 import React from 'react';
+import Layout from "../shared/Layout";
 
 const Home = () => {
   return (
-    <div></div>
+    <div>
+      <Layout></Layout>
+    </div>
   );
 };
 
