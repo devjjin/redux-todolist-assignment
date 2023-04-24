@@ -19,14 +19,17 @@ const TodoCreate = () => {
       alert('할일과 내용을 입력하세요');
       return;
     }
-
-    const newTodo = {
-      id: uuidv4(),
-      ...todoItem,
-    };
-    dispatch(addTodo(newTodo));
-    setTodoItem(initialValue);
-    titleStInput.current.focus();
+    
+    const confirmResult = window.confirm('정말로 추가하시겠습니까?');
+    if (confirmResult) {
+      const newTodo = {
+        id: uuidv4(),
+        ...todoItem,
+      };
+      dispatch(addTodo(newTodo));
+      setTodoItem(initialValue);
+      titleStInput.current.focus();
+    }
   };
 
   return (
