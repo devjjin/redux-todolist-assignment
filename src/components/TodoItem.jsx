@@ -1,18 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { deleteTodo, toggleStatusTodo } from '../redux/modules/todos.js';
 import { Link } from 'react-router-dom';
 
-const TodoItem = ({ todoItem }) => {
-  const dispatch = useDispatch();
-  const onDeleteClick = () => {
-    dispatch(deleteTodo(todoItem.id));
-  };
-  const onToggleClick = () => {
-    dispatch(toggleStatusTodo(todoItem.id));
-  };
-
+const TodoItem = ({ todoItem, onDeleteClick, onToggleClick }) => {
   return (
     <Main key={todoItem.id}>
       <Container>
@@ -22,8 +12,8 @@ const TodoItem = ({ todoItem }) => {
         <Title>{todoItem.title}</Title>
         <p>{todoItem.content}</p>
         <ButtonContainer>
-          <DeleteButton onClick={onDeleteClick}>삭제하기</DeleteButton>
-          <ToggleButton onClick={onToggleClick} isDone={todoItem.isDone}>
+          <DeleteButton onClick={() => onDeleteClick(todoItem.id)}>삭제하기</DeleteButton>
+          <ToggleButton onClick={() => onToggleClick(todoItem.id)} isDone={todoItem.isDone}>
             {!todoItem.isDone ? '완료' : '취소'}
           </ToggleButton>
         </ButtonContainer>
@@ -67,7 +57,7 @@ const ButtonContainer = styled.div`
 const StLink = styled(Link)`
   font-weight: bold;
   color: #1864ab;
-`
+`;
 const DeleteButton = styled.button`
   border: 2px solid #e03131;
   color: black;
