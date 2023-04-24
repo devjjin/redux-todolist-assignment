@@ -1,26 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 import TodoItem from './TodoItem';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
-const TodoList = () => {
+const WorkingTodoList = () => {
   const todos = useSelector(state => state.todos);
   const workingTodos = todos.filter(todo => !todo.isDone);
-  const doneTodos = todos.filter(todo => todo.isDone);
 
   return (
     <Container>
       <Title>Working 🔥</Title>
       <ListContainer>
-          {workingTodos.map(todoItem => (
-            <TodoItem key={todoItem.id} todoItem={todoItem} />
-          ))}
-      </ListContainer>
-      <Title>Done 🎉</Title>
-      <ListContainer>
-          {doneTodos.map(todoItem => (
-            <TodoItem key={todoItem.id} todoItem={todoItem} />
-          ))}
+        {workingTodos.map(todoItem => (
+          <TodoItem key={todoItem.id} todoItem={todoItem} />
+        ))}
       </ListContainer>
     </Container>
   );
@@ -43,4 +36,4 @@ const ListContainer = styled.div`
   gap: 12px;
 `;
 
-export default TodoList;
+export default WorkingTodoList;

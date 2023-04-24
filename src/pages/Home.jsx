@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from "../shared/Layout";
 import TodoHeader from '../components/TodoHeader';
 import TodoCreate from '../components/TodoCreate';
-import TodoList from '../components/TodoList';
+import WorkingTodoList from '../components/WorkingTodoList';
+import DoneTodoList from '../components/DoneTodoList';
 
 const Home = () => {
   return (
@@ -10,7 +11,8 @@ const Home = () => {
       <Layout>
         <TodoHeader />
         <TodoCreate />
-        <TodoList />
+        <WorkingTodoList />
+        <DoneTodoList />
       </Layout>
     </div>
   );
